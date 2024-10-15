@@ -1,0 +1,17 @@
+section{
+    color: #008080 ;
+    padding: 10px;
+    text-align: center;
+}
+
+.transition-effect {
+    height: 50px; 
+    background: linear-gradient(to bottom, #fad6c0 0%, #ffffff 100%);
+  }
+
+.mat-icon{
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+}

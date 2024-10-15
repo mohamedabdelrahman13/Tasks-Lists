@@ -1,0 +1,19 @@
+<section  class="mt-1">
+    <div class="bgImg">
+        
+    </div>
+    <div class="tasks container-md container-fluid container-sm-fluid ">
+        <div *ngFor="let item of taskList ; let i = index" class="task-item">
+            <div  class="task" >
+                <div >
+                    <span [class.notCompleted]="!this.taskList[i].completed" [class.completedTask]="this.taskList[i].completed">
+                        {{item.task}}
+                    </span>
+                </div>
+                <div >
+                    <input type="checkbox" [checked]="this.taskList[i].completed" (change)="onCheckboxChange($event , i)">
+                </div>
+            </div>
+        </div>  
+    </div>
+</section>
