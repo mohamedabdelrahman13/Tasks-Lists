@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TaskListService } from '../../service/task-list.service';
 import { ToastrService } from 'ngx-toastr';
@@ -8,20 +8,18 @@ import { task } from '../../models/task.model';
   templateUrl: './tasks-list.component.html',
   styleUrl: './tasks-list.component.css'
 })
-export class TasksListComponent {
+export class TasksListComponent implements OnInit{
      taskList:any;
      //inject used services and modules
      constructor(private http:HttpClient 
     , private tasks:TaskListService
-    ,private toastr:ToastrService){
-      this.tasks.getTaskLists().subscribe((response)=>{
-        this.taskList = response;
-       })
-  }
- 
-  // function to fetch the data List from json server
-  showTasks(){
-  
+    ,private toastr:ToastrService){}
+
+  ngOnInit(): void {
+    //fetch the data from the json server 
+    this.tasks.getTaskLists().subscribe((response)=>{
+      this.taskList = response;
+     })
   }
 
   //function when changing the checking value of the checkbox
@@ -40,6 +38,7 @@ export class TasksListComponent {
   check(i:number){
       //  make the completed status of the checked task = true 
         this.taskList[i].completed = true;
+      // toaster message  
         this.toastr.success(`${this.taskList[i].task} is completed!` , '' , {
             timeOut:1500
         });
@@ -47,7 +46,7 @@ export class TasksListComponent {
 
 
   uncheck(i:number){
-    //  make the completed status of the checked task = false 
+    //  make the completed status of the unchecked task = false 
     this.taskList[i].completed = false;
 }
 
