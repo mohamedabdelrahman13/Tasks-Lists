@@ -1,5 +1,5 @@
 export interface task{
-    id:number;
+    id:string;
     task:string;
     completed:boolean;
 }

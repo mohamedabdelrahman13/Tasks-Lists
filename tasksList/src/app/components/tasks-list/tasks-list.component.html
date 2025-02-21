@@ -2,6 +2,12 @@
     <div class="bgImg">
         
     </div>
+    <div class="add-task">
+        <h2>Add task</h2>
+            <input #InputEle id="newTask" type="text">
+            <button [disabled]="!InputEle" (click)="addNewTask()">Add Task</button>
+        <hr>
+    </div>
     <div class="tasks container-md container-fluid container-sm-fluid ">
         <div *ngFor="let item of taskList ; let i = index" class="task-item">
             <div  class="task" >
@@ -10,7 +16,7 @@
                         {{item.task}}
                     </span>
                 </div>
-                <div >
+                <div>
                     <input type="checkbox" [checked]="this.taskList[i].completed" (change)="onCheckboxChange($event , i)">
                 </div>
             </div>
